@@ -1,2 +1,2 @@
-# normal
+# Normal
 Elm library providing simple tools for working with normal distributions.
