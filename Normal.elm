@@ -94,7 +94,7 @@ level p (modulo some arithmetic). For example,
     
     qnormal 0 1 0.975 == Ok 1.9628974824967147
 
-This implementation should theoretically be accurate up to 1 part in 10^16.
+This implementation should theoretically be accurate up to 1 part in 10^(-16).
 
 If the p is less than or equal to 0, it returns an error for
 negative infinity. Similarly, if p is greater than or equal to 1, it returns an
