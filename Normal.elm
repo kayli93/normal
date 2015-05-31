@@ -10,7 +10,7 @@ import Result exposing (Result)
 
 {-| dnormal calculates the pdf at the point for a normal with a given mean and
 standard deviation. For example, 
-    dnormal 2 1 1 == 0.24197072451914337
+    dnormal 2 1 1 == Ok 0.24197072451914337
 
 If the standard deviation is less than 0, then it returns an error. For standard
 deviation equal to 0, then if the mean is not equal to the point x it returns 0
@@ -40,7 +40,7 @@ dStdNormal x =
 {-| Approximates normal cdf function using the method outlined in West 2004. For
 example, if you wanted to know the cdf value at 6 for a normal distribution with
 mean 0 and standard deviation 2 you would use 
-    pnormal 0 2 6 == 0.9986501019683699
+    pnormal 0 2 6 == Ok 0.9986501019683699
 
 If std is less than 0, it returns an error. If it equals 0, then it returns Ok 0
 if x is less than the mean and Ok 1 otherwise.
@@ -92,7 +92,7 @@ function might be useful if you want to find a cut-off z-score for something
 normally distributed with mean m standard deviation s and significant
 level p (modulo some arithmetic). For example,
     
-    qnormal 0 1 0.975 == 1.9628974824967147
+    qnormal 0 1 0.975 == Ok 1.9628974824967147
 
 This implementation should theoretically be accurate up to 1 part in 10^16.
 
@@ -209,10 +209,8 @@ qStdNormal p =
 
 {-| Sample from a normal distribution using the Marsaglia polar method. This
 creates a generator to be used with the Random module to collect normally
-distribued samples. For instance, if you wanted to get a random value from a
-normal distribution with mean 5 and standard deviation 3 and seed s, you would
-do 
-    Random.generate (rnormal 5 3) s
+distribued samples. 
+
 If std is less than 0, it returns an error. If it equals 0, then morally we
 should have the Dirac delta but that's not easily implementable as far as I
 know.
